@@ -65,7 +65,7 @@ module JavaBuildpack
       # @param [Pathname] target_directory the directory to store the JAR file in.  Defaults to the component's sandbox.
       # @param [String] name an optional name for the download.  Defaults to +@component_name+.
       # @return [Void]
-      def download_jar(jar_name = self.jar_name, target_directory = @droplet.sandbox, name = @component_name)
+      def download_jar(jar_name = self.get_jar_name, target_directory = @droplet.sandbox, name = @component_name)
         super(@version, @uri, jar_name, target_directory, name)
       end
 
@@ -93,7 +93,7 @@ module JavaBuildpack
       # A generated JAR name for the component.  Meets the format +<component-id>-<version>.jar+
       #
       # @return [String] a generated JAR name for the component
-      def jar_name
+      def get_jar_name
         "#{@droplet.component_id}-#{@version}.jar"
       end
 
